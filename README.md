@@ -12,4 +12,4 @@ DOKUMENTASI
 -------------
 
 - [Cara Install](DOCS/installation.md)
-- [Artikel yii2-queue](DOCS/yii2-queue.md)
+- [Artikel yii2-queue](DOCS/queue.md)
