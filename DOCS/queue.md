@@ -6,6 +6,12 @@
     <br>
 </p>
 
+- Artikel terkait: [Implementasi yii2-queue](https://dutainformasi.net/2019/05/22/implementasi-yii2-queue/)
+- File terkait 
+  - [/config/console.php](/config/console.php)
+  - [/components/helpers/DownloadJob.php](/components/helpers/DownloadJob.php)
+  - [/commands/JobQueueController.php](/commands/JobQueueController.php)
+
 CARA INSTALL
 ------------
 Pastikan telah menginstall project utama ini sesuai petunjuk [Installasi](installation.md).
