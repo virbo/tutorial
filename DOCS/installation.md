@@ -47,7 +47,7 @@ git clone https://github.com/virbo/tutorial.git
 2. Install project
 ~~~
 cd tutorial
-php composer install
+composer install
 ~~~
 
 
