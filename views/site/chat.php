@@ -5,19 +5,7 @@ use yii\helpers\Url;
 
 $this->title = 'Yii2::NodeJS';
 
-$js = <<<JS
-var socket = io.connect( 'http://localhost:3000');
-$('#chat-form').submit(function() {
-    var nama = $("#nick_name").val();
-    var msg = $("#message-field").val();
-    if ((nama != '') && (msg != '')){
-        socket.emit('notif',{ name: nama, message: msg});
-        $("#message-field").val("");
-    }
-    return false;
-});
-JS;
-$this->registerJs($js, \yii\web\View::POS_READY)
+$this->registerJs($this->render('notif.js'), \yii\web\View::POS_READY);
 ?>
 <div class="site-index">
     <div class="body-content">
