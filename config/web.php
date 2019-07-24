@@ -52,15 +52,13 @@ $config = [
         'db' => $db,
         'authManager' => [
             'class' => 'yii\rbac\PhpManager', // or use 'yii\rbac\DbManager'
-        ]
-        /*
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'as access' => [
         'class' => 'mdm\admin\components\AccessControl',
