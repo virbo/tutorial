@@ -8,11 +8,11 @@
 
 - Artikel terkait: -
 - File terkait
-- [/nodejs/package.json](/nodejs/package.json)
-- [/nodejs/server.js](/nodejs/server.js)
-- [/views/site/notif.js](/views/site/notif.js)
-- [/controllers/SiteController.php](/controllers/SiteController.php)
-- [/views/site/chat.php](/views/site/chat.php)
+  - [/nodejs/package.json](/nodejs/package.json)
+  - [/nodejs/server.js](/nodejs/server.js)
+  - [/views/site/notif.js](/views/site/notif.js)
+  - [/controllers/SiteController.php](/controllers/SiteController.php)
+  - [/views/site/chat.php](/views/site/chat.php)
 
 CARA INSTALL
 ------------
