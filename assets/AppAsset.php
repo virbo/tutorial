@@ -23,6 +23,9 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
+        'https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js',
+        'js/bootstrap-notify.min.js',
+        'js/notif.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
