@@ -116,6 +116,11 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionChat()
+    {
+        return $this->render('chat');
+    }
+
     /**
      * Displays about page.
      *
