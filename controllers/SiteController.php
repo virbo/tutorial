@@ -2,9 +2,11 @@
 
 namespace app\controllers;
 
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -18,21 +20,11 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['logout'],
-                'rules' => [
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'logout' => ['post'],
+                    'loginas' => ['post'],
                 ],
             ],
         ];
@@ -121,6 +113,26 @@ class SiteController extends Controller
         return $this->render('chat');
     }
 
+    public function actionLoginas($id=null)
+    {
+        if ($id == null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        if ($model = $this->findByToken($id)) {
+            if (Yii::$app->user->login($model)) {
+
+                //reset token
+                $model->auth_key = Yii::$app->security->generateRandomString();
+                $model->save(false);
+                return $this->goHome();
+            } else {
+                return $this->goBack();
+            }
+        }
+
+    }
+
     /**
      * Displays about page.
      *
@@ -129,5 +141,15 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    protected function findByToken($id)
+    {
+        //$model = User::findIdentityByAccessToken($id);
+        if (($model = User::findIdentityByAccessToken($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 }
