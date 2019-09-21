@@ -51,6 +51,10 @@ $this->params['breadcrumbs'][] = $this->title;
                 'template' => Helper::filterActionColumn('{view} {update} {delete} {loginas}'),
                 'buttons' => [
                     'loginas' => function($url, $model) {
+
+                        if ($model->status == 0) {
+                            return null;
+                        }
                         $title = "Login As";
                         $url = Url::to(['loginas', 'id' => $model->auth_key]);
                         $options = [
@@ -60,7 +64,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         $label = "<span class='glyphicon glyphicon-share' arial-hidden='true'></span>";
 
-                        return Yii::$app->user->identity->username == $model->username ? "<span class='glyphicon glyphicon-star' arial-hidden='true'></span>" : Html::a($label, $url, $options);
+                        return Yii::$app->user->identity->username == $model->username ?
+                            "<span class='glyphicon glyphicon-star' arial-hidden='true'></span>" :
+                            Html::a($label, $url, $options);
                     }
                 ],
                 'options' => [
