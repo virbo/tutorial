@@ -60,7 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                         $label = "<span class='glyphicon glyphicon-share' arial-hidden='true'></span>";
 
-                        return Html::a($label, $url, $options);
+                        return Yii::$app->user->identity->username == $model->username ? "<span class='glyphicon glyphicon-star' arial-hidden='true'></span>" : Html::a($label, $url, $options);
                     }
                 ],
                 'options' => [
