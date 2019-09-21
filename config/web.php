@@ -51,7 +51,7 @@ $config = [
         ],
         'db' => $db,
         'authManager' => [
-            'class' => 'yii\rbac\PhpManager', // or use 'yii\rbac\DbManager'
+            'class' => 'yii\rbac\DbManager', // or use 'yii\rbac\DbManager'
         ],
         'urlManager' => [
             'enablePrettyUrl' => true,
@@ -64,8 +64,10 @@ $config = [
         'class' => 'mdm\admin\components\AccessControl',
         'allowActions' => [
             'site/*',
+            //'site/login',
             'admin/*',
-            'some-controller/some-action',
+            //'gii/*',
+            //'user/*',
             // The actions listed here will be allowed to everyone including guests.
             // So, 'admin/*' should not appear here in the production, of course.
             // But in the earlier stages of your development, you may probably want to
