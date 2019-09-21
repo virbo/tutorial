@@ -1,7 +1,9 @@
 <?php
 
+use mdm\admin\components\Helper;
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\search\UserSearch */
@@ -15,7 +17,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
+        <?php
+            if(Helper::checkRoute('create')){
+                echo Html::a('Create User', ['create'], [
+                    'class' => 'btn btn-success',
+                ]);
+            }
+        ?>
     </p>
 
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -24,13 +32,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            ['class' => 'yii\grid\SerialColumn',
+                'options' => [
+                    'width' => '50px',
+                ]
+            ],
             'username',
-            'auth_key',
-            'password_hash',
-            'password_reset_token',
             //'email:email',
             //'status',
             //'created_at',
@@ -38,7 +45,28 @@ $this->params['breadcrumbs'][] = $this->title;
             //'created_by',
             //'updated_by',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'header' => 'Aksi',
+                'class' => 'yii\grid\ActionColumn',
+                'template' => Helper::filterActionColumn('{view} {update} {delete} {loginas}'),
+                'buttons' => [
+                    'loginas' => function($url, $model) {
+                        $title = "Login As";
+                        $url = Url::to(['loginas', 'id' => $model->auth_key]);
+                        $options = [
+                            'title' => $title,
+                            'data-method' => 'post',
+                        ];
+
+                        $label = "<span class='glyphicon glyphicon-share' arial-hidden='true'></span>";
+
+                        return Html::a($label, $url, $options);
+                    }
+                ],
+                'options' => [
+                        'width' => '100px',
+                ]
+            ],
         ],
     ]); ?>
 
