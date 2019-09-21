@@ -147,7 +147,6 @@ class UserController extends Controller
 
     protected function findByToken($id)
     {
-        //$model = User::findIdentityByAccessToken($id);
         if (($model = User::findIdentityByAccessToken($id)) !== null) {
             return $model;
         } else {
