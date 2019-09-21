@@ -109,6 +109,26 @@ class UserController extends Controller
         return $this->redirect(['index']);
     }
 
+    public function actionLoginas($id=null)
+    {
+        if ($id == null) {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+
+        if ($model = $this->findByToken($id)) {
+            if (Yii::$app->user->login($model)) {
+
+                //reset token
+                $model->auth_key = Yii::$app->security->generateRandomString();
+                $model->save(false);
+                return $this->goHome();
+            } else {
+                return $this->goBack();
+            }
+        }
+
+    }
+
     /**
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -123,5 +143,15 @@ class UserController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    protected function findByToken($id)
+    {
+        //$model = User::findIdentityByAccessToken($id);
+        if (($model = User::findIdentityByAccessToken($id)) !== null) {
+            return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
     }
 }
