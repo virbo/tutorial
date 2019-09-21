@@ -37,27 +37,22 @@ AppAsset::register($this);
         ],
     ]);
 
+    $menuGuest = [
+        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Login', 'url' => ['/site/login']]
+    ];
+
     $menu = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Chating', 'url' => ['/site/chat']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
-        Yii::$app->user->isGuest ? (
-            ['label' => 'Login', 'url' => ['/site/login']]
-        ) : (
-            '<li>'
-            . Html::beginForm(['/site/logout'], 'post')
-            . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
-                ['class' => 'btn btn-link logout']
-            )
-            . Html::endForm()
-            . '</li>'
-        )
+        ['label' => 'User', 'url' => ['/user/index']],
+        ['label' => 'Logout', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
     ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'items' => $menu,
+        'items' => Yii::$app->user->isGuest ? $menuGuest : Helper::filter($menu),
     ]);
     NavBar::end();
     ?>
