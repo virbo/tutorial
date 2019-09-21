@@ -37,3 +37,4 @@ tests/_support/_generated
 
 /config/db.php
 /views/site/notif.js
+config/db.php
