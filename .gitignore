@@ -34,3 +34,6 @@ tests/_support/_generated
 
 #nodejs folder
 /nodejs/node_modules
+
+/config/db.php
+/views/site/notif.js
