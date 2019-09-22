@@ -39,7 +39,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             'username',
             //'email:email',
-            //'status',
+            ['header' => 'Status',
+                'value' => function($model){
+                    return $model->status == 10 ? 'Aktif' : 'Tidak aktif';
+                },
+                'options' => ['width' => '100px']
+            ],
             //'created_at',
             //'updated_at',
             //'created_by',
