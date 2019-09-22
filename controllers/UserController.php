@@ -119,7 +119,7 @@ class UserController extends Controller
             if (Yii::$app->user->login($model)) {
 
                 //reset token
-                $model->auth_key = Yii::$app->security->generateRandomString();
+                $model->generateAuthKey();
                 $model->save(false);
                 return $this->goHome();
             } else {
