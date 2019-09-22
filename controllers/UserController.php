@@ -112,7 +112,7 @@ class UserController extends Controller
 
     public function actionLoginas($token=null)
     {
-        if ($id == null) {
+        if ($token == null) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
@@ -122,9 +122,10 @@ class UserController extends Controller
                 //reset token
                 $model->generateAuthKey();
                 $model->save(false);
-                return $this->goBack();
-            } else {
                 return $this->goHome();
+            } else {
+                //return $this->goBack();
+                return $this->redirect(['/site/login']);
             }
         }
 
