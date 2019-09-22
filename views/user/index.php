@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             return null;
                         }
                         $title = "Login As";
-                        $url = Url::to(['loginas', 'id' => $model->auth_key]);
+                        $url = Url::to(['loginas', 'token' => $model->auth_key]);
                         $options = [
                             'title' => $title,
                             'data-method' => 'post',
