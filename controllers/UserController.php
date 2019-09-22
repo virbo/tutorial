@@ -122,9 +122,9 @@ class UserController extends Controller
                 //reset token
                 $model->generateAuthKey();
                 $model->save(false);
-                return $this->goHome();
-            } else {
                 return $this->goBack();
+            } else {
+                return $this->goHome();
             }
         }
 
