@@ -126,7 +126,7 @@ class UserController extends Controller
 
             return $this->goHome();
         } else {
-            return $this->redirect(['/site/login']);
+            return $this->goBack();
         }
 
     }
