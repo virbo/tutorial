@@ -110,13 +110,13 @@ class UserController extends Controller
         return $this->redirect(['index']);
     }
 
-    public function actionLoginas($id=null)
+    public function actionLoginas($token=null)
     {
         if ($id == null) {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
-        if ($model = $this->findByToken($id)) {
+        if ($model = $this->findByToken($token)) {
             if (Yii::$app->user->login($model)) {
 
                 //reset token
@@ -146,9 +146,9 @@ class UserController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    protected function findByToken($id)
+    protected function findByToken($token)
     {
-        if (($model = User::findIdentityByAccessToken($id)) !== null) {
+        if (($model = User::findIdentityByAccessToken($token)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
