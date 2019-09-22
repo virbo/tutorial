@@ -146,13 +146,4 @@ class UserController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
-
-    protected function findByToken($token)
-    {
-        if (($model = User::findIdentityByAccessToken($token)) !== null) {
-            return $model;
-        } else {
-            throw new NotFoundHttpException('The requested page does not exist.');
-        }
-    }
 }
