@@ -116,17 +116,17 @@ class UserController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
 
-        if ($model = $this->findByToken($token)) {
-            if (Yii::$app->user->login($model)) {
+        if (Yii::$app->user->loginByAccessToken($token)) {
 
-                //reset token
-                $model->generateAuthKey();
-                $model->save(false);
-                return $this->goHome();
-            } else {
-                //return $this->goBack();
-                return $this->redirect(['/site/login']);
-            }
+            //reset token
+            User::updateAll([
+                'auth_key' => Yii::$app->security->generateRandomString()],
+                "auth_key = '".$token."'"
+            );
+
+            return $this->goHome();
+        } else {
+            return $this->redirect(['/site/login']);
         }
 
     }
