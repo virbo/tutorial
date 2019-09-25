@@ -126,7 +126,7 @@ class UserController extends Controller
 
             return $this->goHome();
         } else {
-            return $this->goBack();
+            throw new NotFoundHttpException('The requested page does not exist.');
         }
 
     }
