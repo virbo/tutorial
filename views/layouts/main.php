@@ -42,13 +42,19 @@ AppAsset::register($this);
         ['label' => 'Login', 'url' => ['/site/login']]
     ];
 
+    $labelLogout = !Yii::$app->user->isGuest ? 'Logout ('.Yii::$app->user->identity->username.')' : null;
+
     $menu = [
         ['label' => 'Home', 'url' => ['/site/index']],
         ['label' => 'Chating', 'url' => ['/site/chat']],
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
         ['label' => 'User', 'url' => ['/user/index']],
-        ['label' => 'Logout', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
+        [
+            'label' => $labelLogout,
+            'url' => ['/site/logout'],
+            'linkOptions' => ['data-method' => 'post'],
+        ]
     ];
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
