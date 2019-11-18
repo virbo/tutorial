@@ -16,23 +16,23 @@ CARA INSTALL
 ------------
 
 
-##Pengguna Baru
-
+Pengguna Baru
+--------------
 Ikuti petunjuk [Installasi](installation.md) ini.
 
 
-##Pengguna Lama
-
+Pengguna Lama
+--------------
 Update repository
 ~~~
-git pull https://github.com/virbo/tutorial.git
+    git pull https://github.com/virbo/tutorial.git
 ~~~
 
 Kemudian update composer
-~~~~
-composer update
-~~~~
+~~~
+    composer update
+~~~
 
-##About yii2-queue
-
+About yii2-queue
+----------------
 Dokumentasi lengkap terkait [Yii2 Queue](https://github.com/yiisoft/yii2-queue/blob/master/docs/guide/README.md)

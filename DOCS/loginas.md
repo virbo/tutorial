@@ -16,20 +16,20 @@ CARA INSTALL
 ------------
 
 
-##Pengguna Baru
-
+Pengguna Baru
+--------------
 Ikuti petunjuk [Installasi](installation.md) ini.
 
 
-##Pengguna Lama
-
+Pengguna Lama
+--------------
 Update repository
 ~~~
-git pull https://github.com/virbo/tutorial.git
+    git pull https://github.com/virbo/tutorial.git
 ~~~
 
 Kemudian update composer
-~~~~
-composer update
-~~~~
+~~~
+    composer update
+~~~
 
