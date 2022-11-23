@@ -6,6 +6,6 @@
 	"repository": "https://github.com/virbo/tutorial.git",
 	"dependencies": {
 		"express": "^4.17.1",
-		"socket.io": "^2.4.0"
+		"socket.io": "^2.5.0"
 	}
 }
